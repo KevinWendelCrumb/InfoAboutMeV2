@@ -64,10 +64,9 @@
 		AE87CD1F25022FAC007532F7 /* InfoAboutMeV2 */ = {
 			isa = PBXGroup;
 			children = (
-				AEEA08952502BFE800DDB5ED /* Models */,
+				AEED18DA250B62D800B2C75F /* Models */,
 				AE87CD2025022FAC007532F7 /* AppDelegate.swift */,
 				AE87CD2225022FAC007532F7 /* SceneDelegate.swift */,
-				AE87CD3625023A16007532F7 /* User.swift */,
 				AE87CD2425022FAC007532F7 /* LoginViewController.swift */,
 				AE87CD34250231F1007532F7 /* WelcomeViewController.swift */,
 				AE87CD3825023ED3007532F7 /* AboutMeViewController.swift */,
@@ -80,9 +79,10 @@
 			path = InfoAboutMeV2;
 			sourceTree = "<group>";
 		};
-		AEEA08952502BFE800DDB5ED /* Models */ = {
+		AEED18DA250B62D800B2C75F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AE87CD3625023A16007532F7 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
