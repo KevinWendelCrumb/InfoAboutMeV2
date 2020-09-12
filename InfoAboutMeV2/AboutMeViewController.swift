@@ -10,22 +10,41 @@ import UIKit
 
 class AboutMeViewController: UIViewController {
     
+    @IBOutlet var personName: UILabel!
+    
     var user: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        personName.text = user.person.name
     }
     
-    @IBAction func artTapped(_ sender: UIButton) {
-        performSegue(withIdentifier: "artSegue", sender: nil)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let descriptionVC = segue.destination as! DescriptionViewController
+        
+        switch segue.identifier {
+        case "artSegue":
+            for hobby in user.person.hobbies {
+                if hobby.title == "Живопись" {
+                    descriptionVC.hobby = hobby
+                }
+            }
+        case "teslaSegue":
+            for hobby in user.person.hobbies {
+                if hobby.title == "Тесла" {
+                    descriptionVC.hobby = hobby
+                    
+                }
+            }
+        case "motoSegue":
+            for hobby in user.person.hobbies {
+                if hobby.title == "Мотоцикл" {
+                    descriptionVC.hobby = hobby
+                }
+            }
+        default: break
+            
+        }
     }
-    
-    @IBAction func teslaTapped(_ sender: UIButton) {
-        performSegue(withIdentifier: "teslaSegue", sender: nil)
-    }
-    @IBAction func motoTapped(_ sender: UIButton) {
-        performSegue(withIdentifier: "motoSegue", sender: nil)
-    }
-    
 }
 

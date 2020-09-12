@@ -9,10 +9,15 @@
 import UIKit
 
 class DescriptionViewController: UIViewController {
+
+    @IBOutlet var descriptionOneLabel: UILabel!
+    @IBOutlet var descriptionTwoLabel: UILabel!
+    
+    var hobby: Hobby!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        descriptionOneLabel.text = hobby.descriptionOne
+        descriptionTwoLabel.text = hobby.descriptionTwo
     }
 }

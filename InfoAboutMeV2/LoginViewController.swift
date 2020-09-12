@@ -31,38 +31,47 @@ class LoginViewController: UIViewController {
     }
     //метод при нажатии кнопки logIn
     @IBAction func loginTapped(_ sender: UIButton) {
-        if userNameTF.text! == user.login && passwordTF.text! == user.password {
+        guard let userName = userNameTF.text, !userName.isEmpty else {
+            showAlert(with: "Hm!", and: "Please enter your name")
+            return
+        }
+        guard let password = passwordTF.text, !password.isEmpty else {
+            showAlert(with: "Hm!", and: "Please enter your password")
+            return
+            
+        }
+        
+        if userName == user.login && password == user.password {
             performSegue(withIdentifier: "goToWelcomeVC", sender: nil)
         } else {
-            let wrong = UIAlertController(title: "Hm!", message: "Wrong login or password", preferredStyle: .alert)
-            wrong.addAction(UIAlertAction(title: "OK", style: .default))
-            present(wrong, animated: true)
-            userNameTF.text = ""
+            showAlert(with: "Hm!", and: "Wrong login or password")
             passwordTF.text = ""
         }
     }
     // метод для алерт при нажатии на кнопку Забыл имя
     @IBAction func forgotUserNameButtonPressed() {
-        let alertController = UIAlertController(title: "Ooops!",
-                                                message: "Your login: \(user.login)",
-            preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alertController, animated: true)
+        showAlert(with: "Ooops!", and: "Your name: User")
     }
     
     // метод для алерт при нажатии на кнопку Забыл пароль
     @IBAction func forgotPasswordButtonPressed() {
-        let alertController = UIAlertController(title: "Ooops!",
-                                                message: "Your password: \(user.password)",
-            preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default))
-        present(alertController, animated: true)
+        showAlert(with: "Ooops!", and: "Your password: Password")
     }
     //возвращение на первый экран
-    @IBAction func unwindToOne(_ sender: UIStoryboardSegue) {
+    @IBAction func unwind(_ sender: UIStoryboardSegue) {
         userNameTF.text = ""
         passwordTF.text = ""
-
+    }
+    
+    private func showAlert(with title: String, and message: String) {
+        let alertController = UIAlertController(
+            title: title,
+            message: message,
+            preferredStyle: .alert
+        )
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        present(alertController, animated: true)
     }
    
 }
